@@ -19,6 +19,10 @@ const GlobalStyle = createGlobalStyle`
   outline: none;
 }
 
+body {
+  background-color: #000;
+}
+
 button, a {
   cursor: pointer;
   &:disabled{

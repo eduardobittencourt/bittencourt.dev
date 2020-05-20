@@ -47,12 +47,7 @@ const PageWrapper = ({ children }) => {
 
   if (!firstAttemptFinished) {
     if (isRejected) {
-      return (
-        <div css={{ color: 'red' }}>
-          <p>Uh oh... There's a problem. Try refreshing the app.</p>
-          <pre>{error.message}</pre>
-        </div>
-      )
+      return <></>
     }
 
     return <Loader />
