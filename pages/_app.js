@@ -19,8 +19,15 @@ const GlobalStyle = createGlobalStyle`
   outline: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #000;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 button, a {

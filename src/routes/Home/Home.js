@@ -36,6 +36,15 @@ const Welcome = () => {
 const Home = () => {
   return (
     <Fragment>
+      <Translations>
+        <TextButton color='white' fontFamily='Helvetica'>
+          BR
+        </TextButton>
+        <Divider />
+        <TextButton color='white' fontFamily='Helvetica'>
+          EN
+        </TextButton>
+      </Translations>
       <Container>
         <Welcome />
         <Appear>
@@ -53,17 +62,61 @@ const Home = () => {
           </Link>
         </Appear>
       </Container>
+
+      <ContainerText>
+        <Side variant='right'>
+          <Text color='white' fontFamily='Helvetica' fontSize='24px' textAlign='right'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non luctus purus, quis euismod nisi.
+            Curabitur sagittis id nunc in efficitur. Aenean quam tortor, pharetra a est vulputate, lobortis sagittis
+            quam. Donec nec purus sed leo faucibus posuere a et quam. Mauris justo enim, tempus laoreet lorem non,
+            finibus pharetra ante. Proin pellentesque nulla a leo efficitur faucibus. Cras posuere tempor ante sed
+            tempor. Duis orci turpis, vehicula nec eleifend sit amet, fermentum euismod lorem. Maecenas feugiat feugiat
+            rhoncus. Curabitur turpis nunc, consectetur eu blandit in, consectetur in mauris.
+          </Text>
+        </Side>
+      </ContainerText>
     </Fragment>
   )
 }
 
-const Container = styled.main`
+const Translations = styled.div`
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: flex;
+`
+const TextButton = styled(Text)`
+  cursor: pointer;
+`
+const Divider = styled.div`
+  background-color: white;
+  width: 2px;
+  margin: 0 5px;
+`
+const Container = styled.section`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   align-items: center;
   justify-content: center;
+`
+const ContainerText = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: center;
+`
+const Side = styled.div`
+  max-width: 50%;
+  padding-right: 5%;
+  transition: max-width 0.2s ease-in-out;
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 5%;
+  }
 `
 const appear = keyframes`
   from {
@@ -80,6 +133,8 @@ const Appear = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: sticky;
+  top: 10px;
 `
 
 export default Home
