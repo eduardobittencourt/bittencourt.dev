@@ -2,8 +2,6 @@ import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 import * as Sentry from '@sentry/browser'
 
-import PageWrapper from 'components/PageWrapper'
-
 import AppProviders from 'context'
 
 import Theme from 'theme'
@@ -51,9 +49,7 @@ const App = ({ Component, pageProps }) => (
   <AppProviders>
     <GlobalStyle />
     <Theme>
-      <PageWrapper>
-        <Component {...pageProps} />
-      </PageWrapper>
+      <Component {...pageProps} />
     </Theme>
   </AppProviders>
 )
