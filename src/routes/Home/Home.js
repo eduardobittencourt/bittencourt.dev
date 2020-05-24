@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react'
+import styled, { keyframes } from 'styled-components'
+
 import Text from 'components/Text'
 import Link from 'components/Link'
-import styled, { keyframes } from 'styled-components'
 
 const WELCOME_MESSAGES = [
   'Bem vindo, meu nome é',
@@ -34,14 +35,15 @@ const Welcome = () => {
 }
 
 const Home = () => {
+  const [lang, setLang] = useState('br')
   return (
     <Fragment>
       <Translations>
-        <TextButton color='white' fontFamily='Helvetica'>
+        <TextButton color='white' fontFamily='Helvetica' onClick={() => setLang('br')}>
           BR
         </TextButton>
         <Divider />
-        <TextButton color='white' fontFamily='Helvetica'>
+        <TextButton color='white' fontFamily='Helvetica' onClick={() => setLang('en')}>
           EN
         </TextButton>
       </Translations>
@@ -63,18 +65,11 @@ const Home = () => {
         </Appear>
       </Container>
 
-      <ContainerText>
-        <Side variant='right'>
-          <Text color='white' fontFamily='Helvetica' fontSize='24px' textAlign='right'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non luctus purus, quis euismod nisi.
-            Curabitur sagittis id nunc in efficitur. Aenean quam tortor, pharetra a est vulputate, lobortis sagittis
-            quam. Donec nec purus sed leo faucibus posuere a et quam. Mauris justo enim, tempus laoreet lorem non,
-            finibus pharetra ante. Proin pellentesque nulla a leo efficitur faucibus. Cras posuere tempor ante sed
-            tempor. Duis orci turpis, vehicula nec eleifend sit amet, fermentum euismod lorem. Maecenas feugiat feugiat
-            rhoncus. Curabitur turpis nunc, consectetur eu blandit in, consectetur in mauris.
-          </Text>
-        </Side>
+      <ContainerText align='flex-end'>
+        <Side>{translations[lang].about}</Side>
       </ContainerText>
+
+      <ContainerText align='center'>{translations[lang].contact}</ContainerText>
     </Fragment>
   )
 }
@@ -87,6 +82,10 @@ const Translations = styled.div`
 `
 const TextButton = styled(Text)`
   cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: purple;
+  }
 `
 const Divider = styled.div`
   background-color: white;
@@ -106,7 +105,7 @@ const ContainerText = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  align-items: flex-end;
+  align-items: ${({ align }) => (align ? align : 'flex-start')};
   justify-content: center;
 `
 const Side = styled.div`
@@ -136,5 +135,60 @@ const Appear = styled.div`
   position: sticky;
   top: 10px;
 `
+const NaveLink = styled(Link)`
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: purple;
+  }
+`
+
+const translations = {
+  br: {
+    about: (
+      <Text color='white' fontFamily='Helvetica' fontSize='24px' textAlign='right'>
+        Front-end developer na{' '}
+        <NaveLink
+          variant='external'
+          href='https://nave.rs'
+          target='_blank'
+          color='white'
+          textDecoration='none'
+          fontFamily='Helvetica'
+        >
+          Nave.rs
+        </NaveLink>
+        , entusiasta do mundo JS e React e residente de Pelotas, RS.
+      </Text>
+    ),
+    contact: (
+      <Text color='white' fontFamily='Helvetica' fontSize='24px' textAlign='center' width='50%'>
+        Entre em contato
+      </Text>
+    )
+  },
+  en: {
+    about: (
+      <Text color='white' fontFamily='Helvetica' fontSize='24px' textAlign='right'>
+        Front-end developer at{' '}
+        <NaveLink
+          variant='external'
+          href='https://nave.rs'
+          target='_blank'
+          color='white'
+          textDecoration='none'
+          fontFamily='Helvetica'
+        >
+          Nave.rs
+        </NaveLink>
+        , enthusiast from the JS and React world and resident of Pelotas, RS.
+      </Text>
+    ),
+    contact: (
+      <Text color='white' fontFamily='Helvetica' fontSize='24px' textAlign='center' width='50%'>
+        Get in touch
+      </Text>
+    )
+  }
+}
 
 export default Home
