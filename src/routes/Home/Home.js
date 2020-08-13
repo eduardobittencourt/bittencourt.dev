@@ -69,7 +69,53 @@ const Home = () => {
         <Side>{translations[lang].about}</Side>
       </ContainerText>
 
-      <ContainerText align='center'>{translations[lang].contact}</ContainerText>
+      <ContainerText align='center'>
+        {translations[lang].contact}
+        <div style={{ display: 'flex', marginTop: 10 }}>
+          <NaveLink
+            variant='external'
+            href='https://github.com/eduardobittencourt'
+            target='_blank'
+            color='white'
+            textDecoration='none'
+            fontFamily='Helvetica'
+            fontSize='24px'
+            textAlign='center'
+          >
+            Github
+          </NaveLink>
+          <Text color='white' fontFamily='Helvetica' fontSize='24px' textAlign='right' margin='0 10px'>
+            -
+          </Text>
+          <NaveLink
+            variant='external'
+            href='https://www.linkedin.com/in/eduardobittencourt08/'
+            target='_blank'
+            color='white'
+            textDecoration='none'
+            fontFamily='Helvetica'
+            fontSize='24px'
+            textAlign='center'
+          >
+            LinkedIn
+          </NaveLink>
+          <Text color='white' fontFamily='Helvetica' fontSize='24px' textAlign='right' margin='0 10px'>
+            -
+          </Text>
+          <NaveLink
+            variant='external'
+            href='https://twitter.com/ed_bittencourt'
+            target='_blank'
+            color='white'
+            textDecoration='none'
+            fontFamily='Helvetica'
+            fontSize='24px'
+            textAlign='center'
+          >
+            Twitter
+          </NaveLink>
+        </div>
+      </ContainerText>
     </Fragment>
   )
 }
